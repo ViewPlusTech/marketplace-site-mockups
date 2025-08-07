@@ -25,10 +25,16 @@
         <a href="forgot-password.html">Forgot Password?</a>
       </div>
 
-      <button type="submit">Login</button>
+  <button type="submit">Login</button>
 
       <p class="form-footer">Don't have an account? <a href="signup.html">Sign up</a></p>
       </form>
+      <script>
+        document.querySelector('.form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          window.location.href = 'dashboard.html';
+        });
+      </script>
     </main>
 
   </div>
