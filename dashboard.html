@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="dashboard-layout">
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="brand"><img src="Inclusio font white.png" alt="Inclusio Logo" class="logo" /></div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Main navigation">
         <a href="#">Home</a>
         <a href="#">My Content</a>
         <a href="#">Generators</a>
@@ -23,7 +24,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="main-content">
       <h1>Your Dashboard</h1>
 
       <p>What do you want to create today?</p>
@@ -35,11 +36,11 @@
         <div class="tool-cards">
           <div class="tool-card">
             <h3>Chart Generator</h3>
-            <button type="button" tabindex="0" aria-label="Chart Generator (Coming Soon)">Coming Soon</button>
+            <button type="button" tabindex="0" aria-label="Chart Generator (Coming Soon)" aria-disabled="true">Coming Soon</button>
           </div>
           <div class="tool-card">
             <h3>Shape Generator</h3>
-            <button type="button" tabindex="0" aria-label="Shape Generator (Coming Soon)">Coming Soon</button>
+            <button type="button" tabindex="0" aria-label="Shape Generator (Coming Soon)" aria-disabled="true">Coming Soon</button>
           </div>
         </div>
       </section>
@@ -48,6 +49,7 @@
         <h2>Convert your inaccessible files to accessible formats</h2>
         <div class="drop-zone">
           <p>Browse or drop files here</p>
+          <label for="fileUpload" class="sr-only">Upload files</label>
           <input type="file" id="fileUpload" multiple />
           <p class="note">* Supported file types: .png, .jpg</p>
         </div>
