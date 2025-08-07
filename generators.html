@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inclusio – Dashboard</title>
+  <title>Inclusio – Generators</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,28 +11,24 @@
   <div class="dashboard-layout">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="brand"><img src="Inclusio font white.png" alt="Inclusio Logo" class="logo" /></div>
-  <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
-  <a href="dashboard.html" title="Go to the home dashboard">Home</a>
-  <a href="uploaded-files.html" title="View and manage your content">My Content</a>
-  <a href="generators.html" title="Access content generators">Generators</a>
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" title="View and manage your content">My Content</a>
+        <a href="generators.html" class="active" title="Access content generators">Generators</a>
   <a href="help.html" title="Get help and support">Help</a>
   <a href="settings.html" title="Change your settings">Settings</a>
   <a href="pricing.html" title="Upgrade your account">Upgrade</a>
       </nav>
-  <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content" id="main-content">
-      <h1>Your Dashboard</h1>
-
-      <p>What do you want to create today?</p>
-      <input type="text" class="search-bar" placeholder="Search..." />
-      <p class="tip">Tip: The more details you provide, the better!</p>
-
+      <h1>Generators</h1>
+      <p>Choose a generator tool below to create accessible content.</p>
       <section class="tools">
-        <h2>Quick Tools</h2>
+        <h2>Available Generators</h2>
         <div class="tool-cards">
           <div class="tool-card">
             <h3>Chart Generator</h3>
@@ -44,17 +40,6 @@
           </div>
         </div>
       </section>
-
-      <section class="upload-panel">
-        <h2>Convert your inaccessible files to accessible formats</h2>
-        <div class="drop-zone">
-          <p>Browse or drop files here</p>
-          <label for="fileUpload" class="sr-only">Upload files</label>
-          <input type="file" id="fileUpload" multiple accept=".png,.jpg,image/png,image/jpeg" />
-          <p class="note">* Supported file types: .png, .jpg</p>
-        </div>
-      </section>
-
     </main>
     <script>
       document.addEventListener('keydown', function(e) {
