@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inclusio – Uploaded Files</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+  <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" class="active" title="View and manage your content">My Content</a>
+        <a href="#" title="Access content generators">Generators</a>
+        <a href="#" title="Get help and support">Help</a>
+        <a href="#" title="Change your settings">Settings</a>
+        <a href="#" title="Upgrade your account">Upgrade</a>
+      </nav>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+    </aside>
+
+    <!-- Main Content -->
+  <main class="main-content" id="main-content">
+      <h1>My Content</h1>
+
+  <h2>Uploaded Files</h2>
+  <p id="uploaded-files-desc">Below are your recently uploaded image files. Select a thumbnail to view or manage the file.</p>
+  <div class="grid" aria-label="Uploaded image files" aria-describedby="uploaded-files-desc">
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-1" aria-describedby="thumb-desc-1">
+          <img src="thumbnail1.png" alt="alt text for thumbnail1" />
+          <div id="thumb-title-1" class="thumb-title sr-only">Title for thumbnail1</div>
+          <div id="thumb-desc-1" class="thumb-desc sr-only">Description for thumbnail1</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-2" aria-describedby="thumb-desc-2">
+          <img src="thumbnail2.png" alt="alt text for thumbnail2" />
+          <div id="thumb-title-2" class="thumb-title sr-only">Title for thumbnail2</div>
+          <div id="thumb-desc-2" class="thumb-desc sr-only">Description for thumbnail2</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-3" aria-describedby="thumb-desc-3">
+          <img src="thumbnail3.png" alt="alt text for thumbnail3" />
+          <div id="thumb-title-3" class="thumb-title sr-only">Title for thumbnail3</div>
+          <div id="thumb-desc-3" class="thumb-desc sr-only">Description for thumbnail3</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-4" aria-describedby="thumb-desc-4">
+          <img src="thumbnail4.png" alt="alt text for thumbnail4" />
+          <div id="thumb-title-4" class="thumb-title sr-only">Title for thumbnail4</div>
+          <div id="thumb-desc-4" class="thumb-desc sr-only">Description for thumbnail4</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-5" aria-describedby="thumb-desc-5">
+          <img src="thumbnail5.png" alt="alt text for thumbnail5" />
+          <div id="thumb-title-5" class="thumb-title sr-only">Title for thumbnail5</div>
+          <div id="thumb-desc-5" class="thumb-desc sr-only">Description for thumbnail5</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="thumb-title-6" aria-describedby="thumb-desc-6">
+          <img src="thumbnail6.png" alt="alt text for thumbnail6" />
+          <div id="thumb-title-6" class="thumb-title sr-only">Title for thumbnail6</div>
+          <div id="thumb-desc-6" class="thumb-desc sr-only">Description for thumbnail6</div>
+        </a>
+      </div>
+
+  <h2 style="margin-top: 3rem;">Favorites</h2>
+  <p id="favorites-desc">These are your favorite images. Select a thumbnail to view or manage the file.</p>
+  <div class="grid" aria-label="Favorite images" aria-describedby="favorites-desc">
+        <a href="#" class="grid-item" aria-labelledby="fav-title-1" aria-describedby="fav-desc-1">
+          <img src="favorite1.png" alt="alt text for favorite1" />
+          <div id="fav-title-1" class="thumb-title sr-only">Title for favorite1</div>
+          <div id="fav-desc-1" class="thumb-desc sr-only">Description for favorite1</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="fav-title-2" aria-describedby="fav-desc-2">
+          <img src="favorite2.png" alt="alt text for favorite2" />
+          <div id="fav-title-2" class="thumb-title sr-only">Title for favorite2</div>
+          <div id="fav-desc-2" class="thumb-desc sr-only">Description for favorite2</div>
+        </a>
+        <a href="#" class="grid-item" aria-labelledby="fav-title-3" aria-describedby="fav-desc-3">
+          <img src="favorite3.png" alt="alt text for favorite3" />
+          <div id="fav-title-3" class="thumb-title sr-only">Title for favorite3</div>
+          <div id="fav-desc-3" class="thumb-desc sr-only">Description for favorite3</div>
+        </a>
+      </div>
+
+    </main>
+    <script>
+      document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

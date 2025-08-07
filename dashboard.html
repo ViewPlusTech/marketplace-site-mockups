@@ -12,9 +12,9 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="brand"><img src="Inclusio font white.png" alt="Inclusio Logo" class="logo" /></div>
-      <nav class="nav" aria-label="Main navigation">
-  <a href="#" title="Go to the home dashboard">Home</a>
-  <a href="#" title="View and manage your content">My Content</a>
+  <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+  <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+  <a href="uploaded-files.html" title="View and manage your content">My Content</a>
   <a href="#" title="Access content generators">Generators</a>
   <a href="#" title="Get help and support">Help</a>
   <a href="#" title="Change your settings">Settings</a>
@@ -56,6 +56,20 @@
       </section>
 
     </main>
+    <script>
+      document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      });
+    </script>
   </div>
 </body>
 </html>
