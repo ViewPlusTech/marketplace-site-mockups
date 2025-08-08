@@ -32,10 +32,30 @@
         <li>Phone: 1-800-INCLUSIO</li>
         <li><a href="#">Documentation</a></li>
       </ul>
+      <section class="keyboard-shortcuts">
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+          <li><strong>Windows:</strong> Press <kbd>Alt</kbd> + <kbd>N</kbd> to jump to the sidebar navigation.</li>
+          <li><strong>Mac:</strong> Press <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>N</kbd> to jump to the sidebar navigation.</li>
+        </ul>
+        <p>This shortcut works throughout the Inclusio app to quickly access the main navigation links.</p>
+      </section>
     </main>
     <script>
       document.addEventListener('keydown', function(e) {
+        // Windows: Alt+N
         if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+        // Mac: Control+Option+N
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'n') {
           var nav = document.getElementById('sidebar-nav');
           if (nav) {
             var firstLink = nav.querySelector('a');

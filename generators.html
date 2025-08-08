@@ -43,7 +43,19 @@
     </main>
     <script>
       document.addEventListener('keydown', function(e) {
+        // Windows: Alt+N
         if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+        // Mac: Control+Option+N
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'n') {
           var nav = document.getElementById('sidebar-nav');
           if (nav) {
             var firstLink = nav.querySelector('a');
