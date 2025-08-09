@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inclusio – Favorite Details</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" class="active" title="View and manage your content">My Content</a>
+        <a href="generators.html" title="Access content generators">Generators</a>
+        <a href="help.html" title="Get help and support">Help</a>
+        <a href="settings.html" title="Change your settings">Settings</a>
+        <a href="pricing.html" title="Upgrade your account">Upgrade</a>
+      </nav>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+    </aside>
+    <main class="main-content" id="main-content">
+      <h1>Favorite Details</h1>
+      <img src="favorite1.png" alt="alt text for favorite1" class="details-image" />
+      <dl>
+        <dt>Title</dt>
+        <dd>Title for favorite1</dd>
+        <dt>Description</dt>
+        <dd>Description for favorite1</dd>
+        <dt>Uploaded</dt>
+        <dd>2025-08-08</dd>
+        <dt>Type</dt>
+        <dd>PNG Image</dd>
+      </dl>
+      <div class="actions">
+        <button type="button">Download</button>
+        <button type="button">Delete</button>
+        <button type="button">Remove from Favorites</button>
+      </div>
+      <a href="uploaded-files.html" class="back-link">Back to My Content</a>
+    </main>
+    <script>
+      document.addEventListener('keydown', function(e) {
+        // Windows: Alt+N
+        if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+        // Mac: Control+Option+N
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>
