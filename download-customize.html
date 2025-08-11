@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customize Download – Inclusio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" title="View and manage your content">My Content</a>
+        <a href="generators.html" title="Access content generators">Generators</a>
+        <a href="help.html" title="Get help and support">Help</a>
+        <a href="settings.html" title="Change your settings">Settings</a>
+        <a href="pricing.html" title="Upgrade your account">Upgrade</a>
+      </nav>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+    </aside>
+    <main class="main-content" id="main-content">
+      <h1>Customize Your Download</h1>
+      <div class="container" style="max-width:500px; margin:2rem auto;">
+        <form aria-label="Customize download options" style="display:flex; flex-direction:column; gap:1.2rem;">
+          <div>
+            <label for="page-size" style="font-weight:600;">Page Size</label>
+            <select id="page-size" name="page-size">
+              <option value="default">Default</option>
+              <option value="letter">Letter</option>
+              <option value="braille">Braille</option>
+            </select>
+          </div>
+          <div>
+            <label for="braille-settings" style="font-weight:600;">Braille Settings</label>
+            <select id="braille-settings" name="braille-settings">
+              <option value="default">Default</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label for="format" style="font-weight:600;">File Format</label>
+            <select id="format" name="format">
+              <option value="svg">SVG</option>
+              <option value="png">PNG</option>
+              <option value="pdf">PDF</option>
+            </select>
+          </div>
+          <button type="button" class="button" style="padding:0.75rem 1.5rem; background:#004b8d; color:#fff; border-radius:4px; text-decoration:none; font-size:1rem; font-weight:500;" onclick="window.location.href='download.html'">Apply & Go Back</button>
+        </form>
+        <a href="download.html" class="back-link" style="display:block; margin-top:2rem;">Back to Download Options</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

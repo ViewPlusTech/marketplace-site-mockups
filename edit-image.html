@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Image Details – Inclusio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" title="View and manage your content">My Content</a>
+        <a href="generators.html" title="Access content generators">Generators</a>
+        <a href="help.html" title="Get help and support">Help</a>
+        <a href="settings.html" title="Change your settings">Settings</a>
+        <a href="pricing.html" title="Upgrade your account">Upgrade</a>
+      </nav>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+    </aside>
+    <main class="main-content" id="main-content">
+      <h1>Edit Image Details</h1>
+      <form class="container" aria-label="Edit image details form" style="display:flex; flex-direction:column; gap:1.2rem;">
+        <div style="display:flex; flex-direction:column;">
+          <label for="edit-type" style="margin-bottom:0.4rem; font-weight:600;">Image Type</label>
+          <input type="text" id="edit-type" name="edit-type" placeholder="Enter image type" />
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <label for="edit-title" style="margin-bottom:0.4rem; font-weight:600;">Image Title</label>
+          <input type="text" id="edit-title" name="edit-title" placeholder="Enter image title" />
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <label for="edit-desc" style="margin-bottom:0.4rem; font-weight:600;">Image Description</label>
+          <textarea id="edit-desc" name="edit-desc" rows="4" placeholder="Enter image description"></textarea>
+        </div>
+        <button type="button" onclick="window.location.href='details.html'">Save Changes</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

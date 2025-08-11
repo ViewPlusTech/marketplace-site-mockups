@@ -23,26 +23,42 @@
       <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
     </aside>
     <main class="main-content" id="main-content">
-      <h1>Search Results</h1>
-      <p>Showing results for your query:</p>
-      <div class="search-results">
-        <!-- Example result cards -->
-        <div class="result-card">
+  <h1>Results for <span class="query">"Search Term"</span></h1>
+  <p class="muted" aria-live="polite">3 results</p>
+      <div class="grid" aria-label="Search results" aria-live="polite">
+        <a href="details-search.html" class="grid-item">
           <img src="thumbnail1.png" alt="alt text for thumbnail1" />
-          <div class="result-info">
-            <h2>Title for thumbnail1</h2>
-            <p>Description for thumbnail1</p>
-            <a href="details.html" class="details-link">View Details</a>
+          <div class="support-label" style="margin-top:1rem; font-size:0.95rem; color:#333; font-weight:500;">Support Includes:</div>
+          <div class="badges">
+            <span class="badge">Image Description</span>
+            <span class="badge">Embossing</span>
+            <span class="badge">Monarch</span>
+            <span class="badge">Audio-Tactile</span>
           </div>
-        </div>
-        <div class="result-card">
+          <div id="result-title-1" class="thumb-title sr-only">Title for thumbnail1</div>
+          <div id="result-desc-1" class="thumb-desc sr-only">Description for thumbnail1</div>
+        </a>
+        <a href="details-search.html" class="grid-item">
           <img src="thumbnail2.png" alt="alt text for thumbnail2" />
-          <div class="result-info">
-            <h2>Title for thumbnail2</h2>
-            <p>Description for thumbnail2</p>
-            <a href="details.html" class="details-link">View Details</a>
+          <div class="support-label" style="margin-top:1rem; font-size:0.95rem; color:#333; font-weight:500;">Support Includes:</div>
+          <div class="badges">
+            <span class="badge">Image Description</span>
+            <span class="badge">Embossing</span>
+            <span class="badge">Monarch</span>
           </div>
-        </div>
+          <div id="result-title-2" class="thumb-title sr-only">Title for thumbnail2</div>
+          <div id="result-desc-2" class="thumb-desc sr-only">Description for thumbnail2</div>
+        </a>
+        <a href="details-search.html" class="grid-item">
+          <img src="thumbnail3.png" alt="alt text for thumbnail3" />
+          <div class="support-label" style="margin-top:1rem; font-size:0.95rem; color:#333; font-weight:500;">Support Includes:</div>
+          <div class="badges">
+            <span class="badge">Image Description</span>
+            <span class="badge">Embossing</span>
+          </div>
+          <div id="result-title-3" class="thumb-title sr-only">Title for thumbnail3</div>
+          <div id="result-desc-3" class="thumb-desc sr-only">Description for thumbnail3</div>
+        </a>
         <!-- Add more result cards as needed -->
       </div>
     </main>

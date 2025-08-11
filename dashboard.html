@@ -81,6 +81,15 @@
           }
         }
       });
+    // Redirect to search results when Enter is pressed in the search bar
+    var searchBar = document.querySelector('.search-bar');
+    if (searchBar) {
+      searchBar.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && searchBar.value.trim() !== '') {
+          window.location.href = 'search-results.html';
+        }
+      });
+    }
     </script>
   </div>
 </body>

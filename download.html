@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Download File – Inclusio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
+      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
+        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
+        <a href="uploaded-files.html" title="View and manage your content">My Content</a>
+        <a href="generators.html" title="Access content generators">Generators</a>
+        <a href="help.html" title="Get help and support">Help</a>
+        <a href="settings.html" title="Change your settings">Settings</a>
+        <a href="pricing.html" title="Upgrade your account">Upgrade</a>
+      </nav>
+      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
+    </aside>
+    <main class="main-content" id="main-content">
+      <h1>Download File</h1>
+      <div class="container" style="max-width:500px; margin:2rem auto;">
+        <h2 id="download-format">Choose your download format</h2>
+        <form aria-labelledby="download-format" style="margin-top:1.5rem;">
+          <fieldset style="border:none; margin-bottom:2rem;">
+            <legend style="font-weight:600; font-size:1.1rem;">Multi Modal or Audio Tactile</legend>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="desc" name="format" value="Image Description" />
+              <label for="desc">Image Description</label>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="iveo" name="format" value="ViewPlus IVEO" />
+              <label for="iveo">ViewPlus IVEO</label>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="vital" name="format" value="Vital" />
+              <label for="vital">Vital</label>
+            </div>
+          </fieldset>
+          <fieldset style="border:none; margin-bottom:2rem;">
+            <legend style="font-weight:600; font-size:1.1rem;">Tactile</legend>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="tiger" name="format" value="ViewPlus-Tiger/Embossers" />
+              <label for="tiger">ViewPlus-Tiger/Embossers</label>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="piaf" name="format" value="PIAF/Thermoform" />
+              <label for="piaf">PIAF/Thermoform</label>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="monarch" name="format" value="Monarch" />
+              <label for="monarch">Monarch</label>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <input type="radio" id="tactileview" name="format" value="TactileView/SVG" />
+              <label for="tactileview">TactileView/SVG</label>
+            </div>
+          </fieldset>
+          <button type="button" class="button" style="padding:0.75rem 1.5rem; background:#004b8d; color:#fff; border-radius:4px; text-decoration:none; font-size:1rem; font-weight:500; margin-right:0.75rem;" onclick="window.location.href='details.html'">Download</button>
+          <button type="button" class="button" style="padding:0.75rem 1.5rem; background:#004b8d; color:#fff; border-radius:4px; text-decoration:none; font-size:1rem; font-weight:500;" onclick="window.location.href='download-customize.html'">Customize</button>
+        </form>
+        <a href="details.html" class="back-link" style="display:block; margin-top:2rem;">Back to Details</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
