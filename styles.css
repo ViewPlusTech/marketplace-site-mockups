@@ -126,6 +126,7 @@ input:focus, button:focus, a:focus {
 /* Dashboard Responsive Layout */
 .dashboard-layout {
   display: flex;
+  flex-direction: row-reverse;
   min-height: 100vh;
 }
 
@@ -133,10 +134,12 @@ input:focus, button:focus, a:focus {
   width: 220px;
   background: #222;
   color: #fff;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 94.7vh;
+  overflow-y: auto;
 }
 
 .sidebar .brand {
@@ -165,6 +168,7 @@ input:focus, button:focus, a:focus {
   margin-top: auto;
   font-size: 1rem;
   opacity: 0.8;
+  align-self: center;
 }
 
 .main-content {

@@ -7,22 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="dashboard-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="brand"><img src="Inclusio font white.png" alt="Inclusio Logo" class="logo" /></div>
-  <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
-  <a href="dashboard.html" title="Go to the home dashboard">Home</a>
-  <a href="uploaded-files.html" title="View and manage your content">My Content</a>
-  <a href="generators.html" title="Access content generators">Generators</a>
-  <a href="help.html" title="Get help and support">Help</a>
-  <a href="settings.html" title="Change your settings">Settings</a>
-  <a href="pricing.html" title="Upgrade your account">Upgrade</a>
-      </nav>
-  <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
-    </aside>
-
     <!-- Main Content -->
     <main class="main-content" id="main-content">
       <h1>Your Dashboard</h1>
@@ -56,7 +41,16 @@
       </section>
 
     </main>
+    <!-- Sidebar will be injected here -->
+    <div id="sidebar-container"></div>
     <script>
+      // Inject sidebar.html into #sidebar-container
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+        });
+
       document.addEventListener('keydown', function(e) {
         // Windows: Alt+N
         if (e.altKey && e.key.toLowerCase() === 'n') {
@@ -81,15 +75,15 @@
           }
         }
       });
-    // Redirect to search results when Enter is pressed in the search bar
-    var searchBar = document.querySelector('.search-bar');
-    if (searchBar) {
-      searchBar.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && searchBar.value.trim() !== '') {
-          window.location.href = 'search-results.html';
-        }
-      });
-    }
+      // Redirect to search results when Enter is pressed in the search bar
+      var searchBar = document.querySelector('.search-bar');
+      if (searchBar) {
+        searchBar.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && searchBar.value.trim() !== '') {
+            window.location.href = 'search-results.html';
+          }
+        });
+      }
     </script>
   </div>
 </body>

@@ -7,21 +7,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="dashboard-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="brand"><img src="Inclusio font white.png" alt="alt text for Inclusio Logo" class="logo" /></div>
-      <nav class="nav" aria-label="Main navigation" id="sidebar-nav">
-        <a href="dashboard.html" title="Go to the home dashboard">Home</a>
-        <a href="uploaded-files.html" title="View and manage your content">My Content</a>
-        <a href="generators.html" title="Access content generators">Generators</a>
-        <a href="help.html" title="Get help and support">Help</a>
-        <a href="settings.html" title="Change your settings">Settings</a>
-        <a href="pricing.html" title="Upgrade your account">Upgrade</a>
-      </nav>
-      <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
-    </aside>
+    <!-- Main Content -->
     <main class="main-content" id="main-content">
       <h1>Download File</h1>
       <div class="container" style="max-width:500px; margin:2rem auto;">
@@ -67,6 +54,41 @@
         <a href="details.html" class="back-link" style="display:block; margin-top:2rem;">Back to Details</a>
       </div>
     </main>
+    <!-- Sidebar will be injected here -->
+    <div id="sidebar-container"></div>
+    <script>
+      // Inject sidebar.html into #sidebar-container
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+        });
+
+      document.addEventListener('keydown', function(e) {
+        // Windows: Alt+N
+        if (e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+        // Mac: Control+Option+N
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'n') {
+          var nav = document.getElementById('sidebar-nav');
+          if (nav) {
+            var firstLink = nav.querySelector('a');
+            if (firstLink) {
+              firstLink.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      });
+    </script>
   </div>
 </body>
 </html>
