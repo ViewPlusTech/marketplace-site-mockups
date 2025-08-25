@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inclusio • Shoelace Component Catalog</title>
+
+<!-- Shoelace (CDN, zero-build) -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/dist/shoelace-autoloader.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/cdn/themes/light.css">
+
+<style>
+  body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; }
+  header { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee; padding: .75rem 1rem; z-index: 10; }
+  main { padding: 1rem; max-width: 1100px; margin: 0 auto; }
+  nav a { margin-right: .75rem; white-space: nowrap; }
+  section { padding: 1.5rem 0; border-bottom: 1px dashed #e5e5e5; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .card { border: 1px solid #eee; border-radius: .75rem; padding: 1rem; }
+  .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+</style>
+
+<body>
+  <a class="sr-only" href="#content">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Component groups">
+      <strong>Jump to:</strong>
+      <a href="#forms">Forms</a>
+      <a href="#navigation">Navigation & Menus</a>
+      <a href="#feedback">Feedback & Overlays</a>
+      <a href="#display">Data Display</a>
+      <a href="#layout">Layout & Utilities</a>
+      <a href="#media">Media & Misc</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    <h1>Inclusio • Shoelace Component Catalog</h1>
+    <p>Keyboard and screen reader–friendly demo. Use Tab / Shift+Tab. Esc closes overlays. Headings enable quick SR navigation.</p>
+
+    <!-- FORMS -->
+    <section id="forms" aria-labelledby="h-forms">
+      <h2 id="h-forms">Forms</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Inputs</h3>
+          <sl-input label="Project name" placeholder="Untitled"></sl-input>
+          <sl-textarea label="Description" rows="3" style="margin-top:.5rem"></sl-textarea>
+          <sl-select label="Mode" value="draft" style="margin-top:.5rem">
+            <sl-option value="draft">Draft</sl-option>
+            <sl-option value="review">Review</sl-option>
+            <sl-option value="publish">Publish</sl-option>
+          </sl-select>
+        </div>
+
+        <div class="card">
+          <h3>Choice controls</h3>
+          <sl-checkbox checked>Enable feature</sl-checkbox><br />
+          <sl-switch checked>High contrast</sl-switch>
+          <sl-radio-group label="Density" value="comfortable" style="display:block; margin-top:.5rem">
+            <sl-radio value="compact">Compact</sl-radio>
+            <sl-radio value="comfortable">Comfortable</sl-radio>
+            <sl-radio value="spacious">Spacious</sl-radio>
+          </sl-radio-group>
+        </div>
+
+        <div class="card">
+          <h3>Ranges & pickers</h3>
+          <sl-range label="Zoom" min="50" max="200" value="100"></sl-range>
+          <sl-rating label="Rating" style="margin-top:.5rem"></sl-rating>
+          <sl-color-picker label="Accent color" format="hex" style="margin-top:.5rem"></sl-color-picker>
+        </div>
+
+        <div class="card">
+          <h3>Buttons</h3>
+          <sl-button variant="primary">Primary</sl-button>
+          <sl-button>Default</sl-button>
+          <sl-button variant="success" outline>Outline</sl-button>
+          <sl-button variant="danger" pill>Danger</sl-button>
+          <sl-icon-button name="gear" label="Settings" style="margin-left:.5rem"></sl-icon-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section id="navigation" aria-labelledby="h-nav">
+      <h2 id="h-nav">Navigation & Menus</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Tabs</h3>
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="a">General</sl-tab>
+            <sl-tab slot="nav" panel="b">Accessibility</sl-tab>
+            <sl-tab slot="nav" panel="c">Advanced</sl-tab>
+            <sl-tab-panel name="a">General settings…</sl-tab-panel>
+            <sl-tab-panel name="b">Accessibility options…</sl-tab-panel>
+            <sl-tab-panel name="c">Advanced tweaks…</sl-tab-panel>
+          </sl-tab-group>
+        </div>
+
+        <div class="card">
+          <h3>Dropdown & Menu</h3>
+          <sl-dropdown>
+            <sl-button slot="trigger" caret>Actions</sl-button>
+            <sl-menu>
+              <sl-menu-item>Open</sl-menu-item>
+              <sl-menu-item>Rename</sl-menu-item>
+              <sl-menu-item disabled>Delete</sl-menu-item>
+              <sl-divider></sl-divider>
+              <sl-menu-item checked>Stay signed in</sl-menu-item>
+            </sl-menu>
+          </sl-dropdown>
+        </div>
+
+        <div class="card">
+          <h3>Breadcrumb</h3>
+          <sl-breadcrumb>
+            <sl-breadcrumb-item href="#">Home</sl-breadcrumb-item>
+            <sl-breadcrumb-item href="#">Library</sl-breadcrumb-item>
+            <sl-breadcrumb-item>Item</sl-breadcrumb-item>
+          </sl-breadcrumb>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section id="feedback" aria-labelledby="h-feedback">
+      <h2 id="h-feedback">Feedback & Overlays</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Alert</h3>
+          <sl-alert open variant="primary">
+            <sl-icon slot="icon" name="info-circle"></sl-icon>
+            Placeholder informational alert.
+          </sl-alert>
+          <sl-alert variant="success" closable style="margin-top:.5rem">
+            <sl-icon slot="icon" name="check2-circle"></sl-icon>
+            Saved successfully.
+          </sl-alert>
+        </div>
+
+        <div class="card">
+          <h3>Dialog</h3>
+          <sl-button id="open-dialog" variant="primary">Open dialog</sl-button>
+          <sl-dialog label="Sample dialog" id="demo-dialog">
+            Dialog content goes here.
+            <sl-button slot="footer" variant="primary" onclick="document.querySelector('#demo-dialog').hide()">OK</sl-button>
+            <sl-button slot="footer" variant="neutral" onclick="document.querySelector('#demo-dialog').hide()">Cancel</sl-button>
+          </sl-dialog>
+        </div>
+
+        <div class="card">
+          <h3>Drawer</h3>
+          <sl-button id="open-drawer">Open right drawer</sl-button>
+          <sl-drawer id="demo-drawer" label="Settings">
+            Drawer content…
+            <sl-button slot="footer" variant="primary" onclick="document.querySelector('#demo-drawer').hide()">Close</sl-button>
+          </sl-drawer>
+        </div>
+
+        <div class="card">
+          <h3>Progress & loading</h3>
+          <sl-spinner></sl-spinner>
+          <sl-progress-bar value="45" style="margin-top:.5rem"></sl-progress-bar>
+          <sl-progress-ring value="72" style="margin-top:.5rem"></sl-progress-ring>
+          <sl-skeleton style="margin-top:.5rem; height: 1.8rem; width: 100%"></sl-skeleton>
+          <sl-tooltip content="Helpful tip">
+            <sl-button style="margin-top:.5rem">Hover me</sl-button>
+          </sl-tooltip>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISPLAY -->
+    <section id="display" aria-labelledby="h-display">
+      <h2 id="h-display">Data Display</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Cards & badges</h3>
+          <sl-card>
+            <strong>Card title</strong>
+            <div slot="footer">
+              <sl-badge variant="neutral">Draft</sl-badge>
+              <sl-tag size="small" variant="primary">Tag</sl-tag>
+            </div>
+          </sl-card>
+          <sl-avatar initials="IN" label="Inclusio"></sl-avatar>
+        </div>
+
+        <div class="card">
+          <h3>Formatters</h3>
+          <p><sl-format-bytes value="1536000"></sl-format-bytes></p>
+          <p><sl-format-number value="12345.678" type="currency" currency="USD"></sl-format-number></p>
+          <p><sl-format-date date="2025-08-21T09:00:00Z"></sl-format-date></p>
+          <p><sl-relative-time date="2025-08-18T12:00:00Z"></sl-relative-time></p>
+        </div>
+
+        <div class="card">
+          <h3>Tree</h3>
+          <sl-tree>
+            <sl-tree-item expanded>Project
+              <sl-tree-item>Inputs</sl-tree-item>
+              <sl-tree-item>Exports</sl-tree-item>
+            </sl-tree-item>
+          </sl-tree>
+        </div>
+
+        <div class="card">
+          <h3>Split panel</h3>
+          <sl-split-panel style="height: 180px">
+            <div slot="start" style="padding:.5rem">Pane A</div>
+            <div slot="end" style="padding:.5rem">Pane B</div>
+          </sl-split-panel>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYOUT & UTILITIES -->
+    <section id="layout" aria-labelledby="h-layout">
+      <h2 id="h-layout">Layout & Utilities</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Popup</h3>
+          <sl-button id="popup-trigger">Anchor</sl-button>
+          <sl-popup id="popup" active anchor="popup-trigger" placement="bottom-start">
+            <sl-card>Anchored popup content</sl-card>
+          </sl-popup>
+        </div>
+
+        <div class="card">
+          <h3>Observers</h3>
+          <sl-resize-observer>
+            <div style="border:1px dashed #bbb; padding:.5rem">Resize me to trigger events</div>
+          </sl-resize-observer>
+          <sl-mutation-observer>
+            <div style="margin-top:.5rem">DOM changes can be observed</div>
+          </sl-mutation-observer>
+        </div>
+
+        <div class="card">
+          <h3>Include</h3>
+          <sl-include src="data:text/html,<p>Loaded via &lt;sl-include&gt;</p>"></sl-include>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIA & MISC -->
+    <section id="media" aria-labelledby="h-media">
+      <h2 id="h-media">Media & Misc</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Carousel</h3>
+          <sl-carousel navigation pagination style="max-width: 360px">
+            <sl-carousel-item><img alt="" src="https://picsum.photos/360/160?1" /></sl-carousel-item>
+            <sl-carousel-item><img alt="" src="https://picsum.photos/360/160?2" /></sl-carousel-item>
+            <sl-carousel-item><img alt="" src="https://picsum.photos/360/160?3" /></sl-carousel-item>
+          </sl-carousel>
+        </div>
+
+        <div class="card">
+          <h3>Image comparer</h3>
+          <sl-image-comparer style="max-width:360px">
+            <img slot="before" src="https://picsum.photos/360/160?blur=3" alt="Before">
+            <img slot="after"  src="https://picsum.photos/360/160" alt="After">
+          </sl-image-comparer>
+        </div>
+
+        <div class="card">
+          <h3>Icons & QR</h3>
+          <sl-icon name="box"></sl-icon>
+          <sl-qr-code value="https://inclusio.example/mock" label="QR for Inclusio mock"></sl-qr-code>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    // Wire up overlays/popups
+    document.querySelector('#open-dialog')?.addEventListener('click', () =>
+      document.querySelector('#demo-dialog').show()
+    );
+    document.querySelector('#open-drawer')?.addEventListener('click', () =>
+      document.querySelector('#demo-drawer').show()
+    );
+
+    // Activate popup once DOM is ready to ensure anchor exists
+    const popup = document.querySelector('#popup');
+    if (popup) popup.active = true;
+  </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Inclusio Marketplace — Wireframe (no build)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Shoelace theme (self-host later in prod) -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/themes/light.css" />
+
+  <!-- Map all lit/* subpaths so Shoelace’s internals resolve -->
+  <script type="importmap">
+  {
+    "imports": {
+      "lit":  "https://esm.run/lit@3",
+      "lit/": "https://esm.run/lit@3/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --brand-accent: #1a5cff;
+      --sl-color-primary-600: var(--brand-accent);
+    }
+    body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; }
+    header, main { max-width: 1200px; margin-inline: auto; padding: 1rem; }
+    header { display: flex; gap: 1rem; align-items: center; border-bottom: 1px solid #eee; }
+    nav a { margin-right: .75rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1rem; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: .75rem; margin-block: 1rem; }
+    .sr-only { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to main content</a>
+
+  <header role="banner">
+    <sl-breadcrumb aria-label="Breadcrumb">
+      <sl-breadcrumb-item href="#browse">Marketplace</sl-breadcrumb-item>
+      <sl-breadcrumb-item id="crumb-secondary" aria-current="page">Browse</sl-breadcrumb-item>
+    </sl-breadcrumb>
+
+    <nav aria-label="Primary">
+      <sl-button size="small" variant="text" href="#browse">Browse</sl-button>
+      <sl-button size="small" variant="text" href="#create">Create</sl-button>
+      <sl-button size="small" variant="text" href="#review">Review</sl-button>
+      <sl-button size="small" variant="text" href="#export">Export</sl-button>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Content will be injected here -->
+  </main>
+
+  <!-- Live region for announcements -->
+  <p id="live" aria-live="polite" class="sr-only"></p>
+
+  <!-- Shoelace JS: import only what we use (add as needed) -->
+  <script type="module">
+    // Shoelace base path is not needed when importing files directly
+    const base = 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/components';
+    const imports = [
+      `${base}/button/button.js`,
+      `${base}/input/input.js`,
+      `${base}/select/select.js`,
+      `${base}/option/option.js`,
+      `${base}/checkbox/checkbox.js`,
+      `${base}/switch/switch.js`,
+      `${base}/radio-group/radio-group.js`,
+      `${base}/radio/radio.js`,
+      `${base}/dialog/dialog.js`,
+      `${base}/dropdown/dropdown.js`,
+      `${base}/menu/menu.js`,
+      `${base}/menu-item/menu-item.js`,
+      `${base}/card/card.js`,
+      `${base}/badge/badge.js`,
+      `${base}/tag/tag.js`,
+      `${base}/progress-bar/progress-bar.js`,
+      `${base}/alert/alert.js`,
+      `${base}/breadcrumb/breadcrumb.js`,
+      `${base}/breadcrumb-item/breadcrumb-item.js`,
+      `${base}/tab-group/tab-group.js`,
+      `${base}/tab/tab.js`,
+      `${base}/tab-panel/tab-panel.js`,
+      `${base}/tooltip/tooltip.js`,
+      `${base}/textarea/textarea.js`,
+      `${base}/spinner/spinner.js`
+    ];
+    await Promise.all(imports.map(src => import(src)));
+  </script>
+
+  <script type="module">
+    // --- Minimal data (fake results) ---
+    const MOCK_RESULTS = [
+      { id: 'g1', title: 'Algebra: Linear Functions', tags: ['Math','Grade 8'], status: 'Free' },
+      { id: 'g2', title: 'US Map — Regions (Tactile)', tags: ['Geography','Map'], status: 'Pro' },
+      { id: 'g3', title: 'Biology: Cell Diagram', tags: ['Science'], status: 'Free' },
+      { id: 'g4', title: 'Bar Chart Template', tags: ['Charts'], status: 'Free' }
+    ];
+
+    const main = document.querySelector('#main');
+    const crumbSecondary = document.querySelector('#crumb-secondary');
+    const live = document.querySelector('#live');
+
+    // --- Simple router ---
+    const routes = {
+      browse: renderBrowse,
+      create: renderCreate,
+      review: renderReview,
+      export: renderExport
+    };
+    function navigate() {
+      const hash = (location.hash.replace('#','') || 'browse').split('?')[0];
+      const view = routes[hash] ? hash : 'browse';
+      routes[view]();
+      crumbSecondary.textContent = view[0].toUpperCase() + view.slice(1);
+      // Move focus to main heading for SR users
+      requestAnimationFrame(() => main.focus());
+    }
+    window.addEventListener('hashchange', navigate);
+    navigate();
+
+    // --- View: Browse (find content) ---
+    function renderBrowse() {
+      main.innerHTML = `
+        <h1>Browse content</h1>
+        <div class="controls" role="search">
+          <sl-input id="q" label="Search" placeholder="Try 'algebra', 'map', 'cell'"></sl-input>
+          <sl-select id="subject" label="Subject">
+            <sl-option value="">All subjects</sl-option>
+            <sl-option value="Math">Math</sl-option>
+            <sl-option value="Science">Science</sl-option>
+            <sl-option value="Geography">Geography</sl-option>
+            <sl-option value="Charts">Charts</sl-option>
+          </sl-select>
+          <sl-checkbox id="freeOnly">Free only</sl-checkbox>
+          <sl-button id="apply" variant="primary">Apply filters</sl-button>
+        </div>
+
+        <div class="grid" id="results" aria-live="polite"></div>
+
+        <sl-dialog id="preview" label="Item preview" class="dialog--lg">
+          <div class="preview-body">
+            <p id="previewTitle" style="font-weight:600;margin-bottom:.5rem;"></p>
+            <p class="usa-prose">Placeholder description for the selected item. Add tactile/BLV notes here.</p>
+            <sl-tag id="previewTags" variant="neutral"></sl-tag>
+          </div>
+          <sl-button slot="footer" variant="primary" href="#review">Use this</sl-button>
+          <sl-button slot="footer" variant="neutral" onclick="document.querySelector('#preview').hide()">Close</sl-button>
+        </sl-dialog>
+      `;
+      const resultsEl = main.querySelector('#results');
+      const q = main.querySelector('#q');
+      const subject = main.querySelector('#subject');
+      const freeOnly = main.querySelector('#freeOnly');
+      const apply = main.querySelector('#apply');
+      const preview = main.querySelector('#preview');
+      const previewTitle = main.querySelector('#previewTitle');
+      const previewTags = main.querySelector('#previewTags');
+
+      const renderCards = () => {
+        const qry = (q.value || '').toLowerCase();
+        const subj = subject.value;
+        const onlyFree = freeOnly.checked;
+        const filtered = MOCK_RESULTS.filter(r => {
+          const matchQ = !qry || r.title.toLowerCase().includes(qry) || r.tags.some(t=>t.toLowerCase().includes(qry));
+          const matchS = !subj || r.tags.includes(subj);
+          const matchF = !onlyFree || r.status === 'Free';
+          return matchQ && matchS && matchF;
+        });
+        resultsEl.innerHTML = filtered.map(r => `
+          <sl-card class="result" data-id="${r.id}">
+            <div slot="header" style="display:flex;justify-content:space-between;gap:.5rem;align-items:center">
+              <span>${r.title}</span>
+              <sl-badge variant="${r.status==='Free' ? 'success':'primary'}">${r.status}</sl-badge>
+            </div>
+            <div>${r.tags.map(t=>`<sl-tag size="small" variant="neutral">${t}</sl-tag>`).join(' ')}</div>
+            <div slot="footer" style="display:flex;gap:.5rem;justify-content:flex-end">
+              <sl-button size="small" variant="neutral" data-action="preview">Preview</sl-button>
+              <sl-button size="small" variant="primary" href="#review">Select</sl-button>
+            </div>
+          </sl-card>
+        `).join('') || `<sl-alert open variant="neutral">No results match your filters.</sl-alert>`;
+        live.textContent = `${filtered.length} result${filtered.length===1?'':'s'} shown.`;
+        resultsEl.querySelectorAll('[data-action="preview"]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const card = e.currentTarget.closest('.result');
+            const item = MOCK_RESULTS.find(x => x.id === card.dataset.id);
+            previewTitle.textContent = item.title;
+            previewTags.textContent = item.tags.join(', ');
+            preview.show();
+          });
+        });
+      };
+      apply.addEventListener('click', renderCards);
+      // Press Enter in the search box to apply
+      q.addEventListener('keydown', e => { if (e.key==='Enter') renderCards(); });
+      renderCards();
+    }
+
+    // --- View: Create (upload or generate new content) ---
+    function renderCreate() {
+      main.innerHTML = `
+        <h1>Create content</h1>
+        <div class="controls">
+          <label>
+            <span class="sr-only">Upload</span>
+            <input type="file" aria-label="Upload file">
+          </label>
+          <sl-switch id="autoDescribe" checked>Auto-describe graphics</sl-switch>
+          <sl-radio-group label="Licensing">
+            <sl-radio value="private" checked>Private</sl-radio>
+            <sl-radio value="community">Community</sl-radio>
+            <sl-radio value="public">Public</sl-radio>
+          </sl-radio-group>
+          <sl-button id="start" variant="primary">Process</sl-button>
+        </div>
+        <sl-progress-bar id="prog" value="0" style="display:none"></sl-progress-bar>
+        <sl-alert id="done" variant="success" closable style="display:none">Upload complete. Continue to <a href="#review">Review</a>.</sl-alert>
+      `;
+      const start = main.querySelector('#start');
+      const prog = main.querySelector('#prog');
+      const done = main.querySelector('#done');
+      start.addEventListener('click', () => {
+        prog.style.display = '';
+        let v = 0;
+        const t = setInterval(() => {
+          v += 20; prog.value = v;
+          if (v >= 100) {
+            clearInterval(t);
+            done.style.display = '';
+            live.textContent = 'Upload complete. Proceed to review.';
+          }
+        }, 400);
+      });
+    }
+
+    // --- View: Review (metadata & accessibility checks) ---
+    function renderReview() {
+      main.innerHTML = `
+        <h1>Review & describe</h1>
+        <div class="controls">
+          <sl-input label="Title" value="Untitled graphic"></sl-input>
+          <sl-textarea label="Short description" rows="3" placeholder="Describe the key takeaway…"></sl-textarea>
+          <sl-select label="Category">
+            <sl-option value="diagram" selected>Diagram</sl-option>
+            <sl-option value="chart">Chart</sl-option>
+            <sl-option value="map">Map</sl-option>
+          </sl-select>
+          <sl-checkbox checked>Include Braille labels</sl-checkbox>
+          <sl-checkbox>Large text mode</sl-checkbox>
+          <sl-button variant="primary" href="#export">Continue to Export</sl-button>
+        </div>
+        <sl-alert variant="primary" open>
+          <sl-icon slot="icon" name="info-circle"></sl-icon>
+          Tip: ensure your description covers axes, scale, and outliers.
+        </sl-alert>
+      `;
+    }
+
+    // --- View: Export (choose output formats) ---
+    function renderExport() {
+      main.innerHTML = `
+        <h1>Export</h1>
+        <div class="controls">
+          <sl-select id="fmt" label="Format">
+            <sl-option value="svg" selected>SVG (screen)</sl-option>
+            <sl-option value="pdf">PDF (print)</sl-option>
+            <sl-option value="brf">BRF (Braille)</sl-option>
+            <sl-option value="prn">Embosser PRN</sl-option>
+          </sl-select>
+          <sl-select id="device" label="Device preset">
+            <sl-option value="rogue">ViewPlus Rogue</sl-option>
+            <sl-option value="columbia">ViewPlus Columbia</sl-option>
+            <sl-option value="monarch">APH Monarch</sl-option>
+          </sl-select>
+          <sl-button id="exportBtn" variant="primary">Export</sl-button>
+        </div>
+
+        <sl-dialog id="exportDlg" label="Export started">
+          <p>Your file is being generated. This may take a moment.</p>
+          <sl-spinner></sl-spinner>
+          <sl-button slot="footer" variant="neutral" onclick="document.querySelector('#exportDlg').hide()">Close</sl-button>
+        </sl-dialog>
+      `;
+      const btn = main.querySelector('#exportBtn');
+      const dlg = main.querySelector('#exportDlg');
+      btn.addEventListener('click', () => {
+        dlg.show();
+        live.textContent = 'Export started.';
+      });
+    }
+  </script>
+</body>
+</html>

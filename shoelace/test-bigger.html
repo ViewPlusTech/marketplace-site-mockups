@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shoelace Sampler</title>
+
+  <!-- Shoelace theme -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+
+  <!-- Shoelace autoloader -->
+  <script type="module"
+          src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js">
+  </script>
+</head>
+<body style="font-family: system-ui; padding: 2rem;">
+  <h1>Shoelace Component Sampler</h1>
+
+  <!-- Button -->
+  <h2>Button</h2>
+  <sl-button variant="primary">Click me</sl-button>
+
+  <!-- Input -->
+  <h2>Input</h2>
+  <sl-input label="Your name" placeholder="Enter text"></sl-input>
+
+  <!-- Checkbox -->
+  <h2>Checkbox</h2>
+  <sl-checkbox>Subscribe to newsletter</sl-checkbox>
+
+  <!-- Dialog -->
+  <h2>Dialog</h2>
+  <sl-button id="openDialog">Open dialog</sl-button>
+  <sl-dialog label="Sample Dialog" id="demoDialog">
+    <p>This is a Shoelace dialog.</p>
+    <sl-button slot="footer" variant="primary" onclick="demoDialog.hide()">Close</sl-button>
+  </sl-dialog>
+
+  <!-- Alert -->
+  <h2>Alert</h2>
+  <sl-alert open variant="success" closable>
+    <strong>Success!</strong> This is a sample alert message.
+  </sl-alert>
+
+  <script>
+    // Dialog wiring
+    const openBtn = document.getElementById('openDialog');
+    const demoDialog = document.getElementById('demoDialog');
+    openBtn.addEventListener('click', () => demoDialog.show());
+  </script>
+</body>
+</html>

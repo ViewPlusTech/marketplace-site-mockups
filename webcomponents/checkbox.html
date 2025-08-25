@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shoelace Checkbox • Import Map fixed</title>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/themes/light.css" />
+
+  <!-- Map ALL lit subpaths to esm.run (serves /directives/*, /decorators.js, etc.) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "lit":  "https://esm.run/lit@3",
+      "lit/": "https://esm.run/lit@3/"
+    }
+  }
+  </script>
+
+  <style>
+    body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 2rem; }
+  </style>
+</head>
+<body>
+  <h1>Checkbox test</h1>
+  <p>Use Tab/Shift+Tab to reach each box. Press Space to toggle.</p>
+
+  <sl-checkbox id="cb1" checked>Enable notifications</sl-checkbox><br />
+  <sl-checkbox id="cb2">Subscribe to newsletter</sl-checkbox><br />
+  <sl-checkbox id="cb3" disabled>Disabled option</sl-checkbox><br />
+  <sl-checkbox id="cb4" indeterminate>Partially selected group</sl-checkbox>
+
+  <p id="output" aria-live="polite" style="margin-top:1rem; font-weight:bold;"></p>
+
+  <script type="module">
+    // Import checkbox directly (no autoloader). Use jsDelivr; it will now resolve lit/* via the import map above.
+    const primary  = 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/components/checkbox/checkbox.js';
+    const fallback = 'https://esm.run/@shoelace-style/shoelace@2.20.1/dist/components/checkbox/checkbox.js';
+
+    async function load() {
+      try {
+        await import(primary);
+      } catch (e) {
+        console.warn('jsDelivr import failed, trying esm.run…', e);
+        await import(fallback);
+      }
+
+      if (!customElements.get('sl-checkbox')) {
+        console.error('sl-checkbox still not registered — check network/CORS.');
+        return;
+      }
+
+      // Announce changes
+      const output = document.querySelector('#output');
+      document.querySelectorAll('sl-checkbox').forEach(cb => {
+        cb.addEventListener('sl-change', e => {
+          const el = e.target;
+          output.textContent = `${el.textContent.trim()} is now ${el.checked ? 'checked' : 'unchecked'}`;
+        });
+      });
+
+      console.log('Shoelace checkbox registered ✅');
+    }
+    load();
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shoelace • Master/Child checkboxes</title>
+
+  <!-- Shoelace theme -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/themes/light.css" />
+
+  <!-- Make all lit/* subpaths resolvable for Shoelace internals -->
+  <script type="importmap">
+  {
+    "imports": {
+      "lit":  "https://esm.run/lit@3",
+      "lit/": "https://esm.run/lit@3/"
+    }
+  }
+  </script>
+
+  <style>
+    body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 2rem; }
+    .group { margin: 1rem 0 0 1.25rem; }
+  </style>
+</head>
+<body>
+  <h1>“Select all” with indeterminate state</h1>
+
+  <!-- Master -->
+  <sl-checkbox id="master" indeterminate>Documents</sl-checkbox>
+
+  <!-- Children -->
+  <div class="group" id="children">
+    <sl-checkbox class="child" checked>Proposal.pdf</sl-checkbox><br />
+    <sl-checkbox class="child">Budget.xlsx</sl-checkbox><br />
+    <sl-checkbox class="child" checked>Timeline.docx</sl-checkbox>
+  </div>
+
+  <p id="live" aria-live="polite" style="margin-top:1rem; font-weight:bold;"></p>
+
+  <script type="module">
+    // Import only what we use (no autoloader)
+    await import('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist/components/checkbox/checkbox.js');
+
+    const master = document.querySelector('#master');
+    const kids   = Array.from(document.querySelectorAll('.child'));
+    const live   = document.querySelector('#live');
+
+    function syncMasterFromChildren() {
+      const total   = kids.length;
+      const checked = kids.filter(k => k.checked).length;
+
+      master.indeterminate = checked > 0 && checked < total;
+      master.checked       = checked === total;
+
+      // Optional SR announcement
+      if (master.indeterminate) {
+        live.textContent = `Some items selected in “${master.textContent.trim()}”.`;
+      } else {
+        live.textContent = master.checked
+          ? `All items selected in “${master.textContent.trim()}”.`
+          : `No items selected in “${master.textContent.trim()}”.`;
+      }
+    }
+
+    function setAllChildren(toChecked) {
+      kids.forEach(k => { k.checked = toChecked; });
+      master.indeterminate = false;            // once you set all, it's not mixed
+      master.checked = toChecked;
+      live.textContent = toChecked ? 'All items selected.' : 'All items cleared.';
+    }
+
+    // Wire events
+    kids.forEach(k => k.addEventListener('sl-change', syncMasterFromChildren));
+    master.addEventListener('sl-change', () => setAllChildren(master.checked));
+
+    // Initialize based on current child states
+    syncMasterFromChildren();
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+/* Keep DOM/read order: <main> first, then #sidebar-container */
+/* Visually place the sidebar on the left without changing DOM order */
+.dashboard-layout {
+  display: flex;
+  flex-direction: row;      /* normal order, not row-reverse */
+  align-items: stretch;
+  min-height: 100vh;
+  gap: 0;                   /* prevent unintended gutter */
+  padding: 0;               /* kill container padding that creates a left gap */
+}
+
+#sidebar-container {
+  order: -1;                /* <-- put sidebar *visually* before main */
+  flex: 0 0 220px;          /* fixed rail width */
+  margin: 0;
+  padding: 0;               /* the inner .sidebar controls its own padding */
+}
+
+.main-content {
+  flex: 1 1 auto;           /* fill the remaining space */
+  min-width: 0;             /* avoid overflow pushing layout */
+  margin: 0;
+  padding: 2rem;            /* keep your page padding */
+}
+
+/* Make the injected <aside class="sidebar"> fill and pad itself */
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.25rem;
+}
+
+.main-content {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* Grow the search input wider */
+#dashSearch {
+  flex: 1 1 auto;      /* let it expand in flex row */
+  min-width: 300px;    /* base minimum width */
+  max-width: 900px;    /* cap so it doesn’t get ridiculously wide */
+}

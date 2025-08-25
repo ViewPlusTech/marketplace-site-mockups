@@ -583,3 +583,56 @@ button:hover {
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
+/* === Dashboard layout overrides === */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+#sidebar-container {
+  flex: 0 0 220px;   /* fixed width for sidebar */
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Sidebar injected from sidebar.html */
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #004b8d;   /* brand background */
+  color: #fff;
+  padding: 1.25rem;
+}
+
+.sidebar .nav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: .625rem .75rem;
+  border-radius: .5rem;
+}
+
+.sidebar .nav a:hover,
+.sidebar .nav a:focus {
+  background: rgba(255,255,255,.12);
+}
+
+.sidebar .nav a[aria-current="page"] {
+  background: rgba(255,255,255,.22);
+  font-weight: 600;
+}
+
+.sidebar .user-info {
+  margin-top: auto;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: .625rem .75rem;
+  border-radius: .5rem;
+}
