@@ -208,11 +208,11 @@
 
       function showSuccessToast(msg) {
         if (msg) toastSuccess.querySelector('strong').nextSibling.textContent = ` ${msg}`;
-        toastSuccess.show();
+        toastSuccess.toast();
       }
       function showErrorToast(msg) {
         if (msg) toastError.querySelector('strong').nextSibling.textContent = ` ${msg}`;
-        toastError.show();
+        toastError.toast();
       }
 
       // Demo: Save preferences success toast

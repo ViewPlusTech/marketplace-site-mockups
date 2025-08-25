@@ -44,3 +44,12 @@
   min-width: 300px;    /* base minimum width */
   max-width: 900px;    /* cap so it doesn’t get ridiculously wide */
 }
+
+.sl-toast-stack {
+  position: fixed;
+  top: 1rem;        /* top-right corner */
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+  z-index: 10000;
+}
