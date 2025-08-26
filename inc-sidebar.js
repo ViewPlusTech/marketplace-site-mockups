@@ -26,17 +26,6 @@ template.innerHTML = `
 
     nav.nav a:hover, nav.nav a:focus { background: rgba(255,255,255,.12); }
     nav.nav a[aria-current="page"] { background: rgba(255,255,255,.22); font-weight:600; }
-    a.user-info { 
-    margin-top: 1.5rem; 
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    display:block; 
-    color:#fff; 
-    text-decoration:none;
-    padding:.625rem .75rem; 
-    border-radius:.5rem; 
-  }  
-    a.user-info:hover, a.user-info:focus { background: rgba(255,255,255,.12); }
     :host([mobile]) aside.sidebar { padding: 1rem; }
   </style>
 
@@ -50,7 +39,6 @@ template.innerHTML = `
       <a href="settings.html"         title="Change your settings">Settings</a>
       <a href="pricing.html"          title="Upgrade your account">Upgrade</a>
     </nav>
-    <a href="login.html" class="user-info" tabindex="0" title="View your profile and account options">Hari</a>
   </aside>
 `;
 
@@ -93,6 +81,9 @@ class IncSidebar extends HTMLElement {
     const drawer = document.createElement('sl-drawer');
     drawer.label = 'Menu';
     drawer.placement = 'start'; // left
+    
+    // Set drawer width to match desktop sidebar (220px)
+    drawer.style.setProperty('--size', '220px');
 
     // 2) Grab the existing <aside> (already styled by the <style> in this shadow root)
     const aside = this.shadowRoot.querySelector('aside.sidebar');

@@ -15,6 +15,9 @@
 
   <!-- Reusable sidebar component -->
   <script type="module" src="inc-sidebar.js"></script>
+  
+  <!-- Topbar component -->
+  <script type="module" src="topbar-sl.js"></script>
 
   <style>
     /* Layout: desktop = fixed rail; mobile = drawer */
@@ -57,14 +60,15 @@
   </style>
 </head>
 <body>
+  <!-- Topbar container (populated by topbar-sl.js) -->
+  <div id="topbar-container"></div>
+
   <!-- Mobile menu button (hidden on desktop via media query) -->
   <sl-button id="openMenu" variant="neutral" size="small" aria-label="Open menu">☰ Menu</sl-button>
 
   <div class="dashboard-layout">
     <!-- Main Content -->
-    <main class="main-content maxw" id="main-content" tabindex="-1">
-      <h1>Your Dashboard</h1>
-
+    <main class="main-content main-content-with-topbar maxw" id="main-content" tabindex="-1">
       <p>What do you want to create today?</p>
 
       <!-- Shoelace Search -->

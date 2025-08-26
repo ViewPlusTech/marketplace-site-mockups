@@ -1,0 +1,54 @@
+<header class="topbar">
+  <div class="topbar-content">
+    <!-- Mobile Menu Button -->
+    <sl-icon-button 
+      name="list" 
+      label="Open menu"
+      id="topbar-mobile-menu"
+      class="topbar-mobile-menu">
+    </sl-icon-button>
+    
+    <!-- Page Title -->
+    <h1 class="page-title" id="page-title">Your Dashboard</h1>
+    
+    <!-- Right side: Notifications and User -->
+    <div class="topbar-actions">
+      <!-- Notification Bell -->
+      <sl-tooltip content="Notifications">
+        <sl-icon-button 
+          name="bell" 
+          label="View notifications"
+          id="notifications-btn"
+          class="notification-btn">
+        </sl-icon-button>
+      </sl-tooltip>
+      
+      <!-- User Avatar Dropdown -->
+      <sl-dropdown placement="bottom-end" id="user-dropdown">
+        <div slot="trigger" role="button" tabindex="0" aria-haspopup="menu" aria-expanded="false" 
+             aria-label="User menu - Press Enter to open" class="avatar-button">
+          <sl-avatar 
+            initials="H" 
+            style="--size: 2.5rem; cursor: pointer;">
+          </sl-avatar>
+        </div>
+        
+        <sl-menu role="menu">
+          <sl-menu-item role="menuitem" tabindex="-1">
+            <sl-icon slot="prefix" name="person-circle"></sl-icon>
+            Profile
+          </sl-menu-item>
+          <sl-menu-item role="menuitem" tabindex="-1">
+            <sl-icon slot="prefix" name="gear"></sl-icon>
+            Settings
+          </sl-menu-item>
+          <sl-divider></sl-divider>
+          <sl-menu-item role="menuitem" tabindex="-1">
+            <sl-icon slot="prefix" name="box-arrow-right"></sl-icon>
+            Sign Out
+          </sl-menu-item>
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+  </div>
+</header>

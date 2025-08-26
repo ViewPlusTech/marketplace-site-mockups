@@ -47,9 +47,138 @@
 
 .sl-toast-stack {
   position: fixed;
-  top: 1rem;        /* top-right corner */
+  top: calc(4rem + 1rem);  /* Below topbar (approx 4rem) + 1rem spacing */
   right: 1rem;
   bottom: auto;
   left: auto;
-  z-index: 10000;
+  z-index: 10001 !important;  /* Force above topbar with !important */
+}
+
+/* Also ensure individual toasts have high z-index */
+sl-alert[toast] {
+  z-index: 10001 !important;
+}
+
+/* ===== TOPBAR STYLES ===== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;  /* Below toasts (10000) but above content */
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 4rem;  /* Fixed height for consistent spacing */
+  display: flex;
+  align-items: center;
+}
+
+.topbar-content {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.2;
+  flex-grow: 1;  /* Grow to fill available space */
+  margin-right: auto;  /* Push everything after it to the right */
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;  /* Prevent shrinking */
+}
+
+.topbar-mobile-menu {
+  flex-shrink: 0;  /* Prevent shrinking */
+  order: -1;  /* Ensure mobile menu stays on the left */
+}
+
+.notification-btn {
+  font-size: 1.25rem;
+  color: #64748b;
+}
+
+.notification-btn:hover {
+  color: #004b8d;
+}
+
+/* Avatar button wrapper for better screen reader support */
+.avatar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.avatar-button:focus {
+  box-shadow: 0 0 0 2px #004b8d;
+}
+
+.avatar-button:hover {
+  opacity: 0.9;
+}
+
+/* Adjust main content to account for topbar */
+.main-content-with-topbar {
+  padding-top: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 899px) {
+  .topbar-content {
+    padding: 0.5rem 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.25rem;
+  }
+  
+  .topbar-actions {
+    gap: 0.5rem;
+  }
+  
+  /* Hide mobile menu button when we have topbar */
+  #openMenu {
+    display: none !important;
+  }
+  
+  /* Add mobile menu button to topbar instead */
+  .topbar-mobile-menu {
+    display: block;
+  }
+  
+  /* Adjust toast position for mobile topbar height */
+  .sl-toast-stack {
+    top: calc(3.5rem + 0.5rem) !important;  /* Smaller mobile topbar + spacing */
+    right: 0.5rem !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .topbar-mobile-menu {
+    display: none;
+  }
+}
+
+/* Control mobile sidebar drawer width to match desktop */
+inc-sidebar[mobile] sl-drawer {
+  --size: 220px;  /* Match desktop sidebar width */
+}
+
+/* Ensure the drawer panel has consistent styling */
+inc-sidebar[mobile] sl-drawer::part(panel) {
+  width: 220px;
+  max-width: 220px;
 }
