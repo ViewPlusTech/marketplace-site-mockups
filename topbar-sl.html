@@ -3,7 +3,7 @@
     <!-- Mobile Menu Button -->
     <sl-icon-button 
       name="list" 
-      label="Open menu"
+      label="Menu"
       id="topbar-mobile-menu"
       class="topbar-mobile-menu">
     </sl-icon-button>
@@ -17,7 +17,7 @@
       <sl-tooltip content="Notifications">
         <sl-icon-button 
           name="bell" 
-          label="View notifications"
+          label="Notifications"
           id="notifications-btn"
           class="notification-btn">
         </sl-icon-button>
@@ -26,7 +26,7 @@
       <!-- User Avatar Dropdown -->
       <sl-dropdown placement="bottom-end" id="user-dropdown">
         <div slot="trigger" role="button" tabindex="0" aria-haspopup="menu" aria-expanded="false" 
-             aria-label="User menu - Press Enter to open" class="avatar-button">
+             aria-label="User menu H" class="avatar-button">
           <sl-avatar 
             initials="H" 
             style="--size: 2.5rem; cursor: pointer;">
@@ -35,16 +35,16 @@
         
         <sl-menu role="menu">
           <sl-menu-item role="menuitem" tabindex="-1">
-            <sl-icon slot="prefix" name="person-circle"></sl-icon>
+            <sl-icon slot="prefix" name="person-circle" aria-hidden="true"></sl-icon>
             Profile
           </sl-menu-item>
           <sl-menu-item role="menuitem" tabindex="-1">
-            <sl-icon slot="prefix" name="gear"></sl-icon>
+            <sl-icon slot="prefix" name="gear" aria-hidden="true"></sl-icon>
             Settings
           </sl-menu-item>
           <sl-divider></sl-divider>
           <sl-menu-item role="menuitem" tabindex="-1">
-            <sl-icon slot="prefix" name="box-arrow-right"></sl-icon>
+            <sl-icon slot="prefix" name="box-arrow-right" aria-hidden="true"></sl-icon>
             Sign Out
           </sl-menu-item>
         </sl-menu>

@@ -94,7 +94,7 @@
           <h2 id="tools-heading">Quick Tools</h2>
           <div class="spacer" aria-hidden="true"></div>
           <sl-tooltip content="Keyboard shortcuts">
-            <sl-icon-button name="keyboard" label="Keyboard shortcuts" id="openShortcuts"></sl-icon-button>
+            <sl-icon-button name="keyboard" label="Shortcuts" id="openShortcuts"></sl-icon-button>
           </sl-tooltip>
         </div>
 
@@ -154,7 +154,7 @@
           <div style="margin-top: .75rem;">
             <sl-progress-bar id="uploadProgress" value="0" style="display:none;"></sl-progress-bar>
             <sl-alert id="uploadDone" variant="success" closable style="display:none; margin-top:.5rem;">
-              <sl-icon slot="icon" name="check2-circle"></sl-icon>
+              <sl-icon slot="icon" name="check2-circle" aria-hidden="true"></sl-icon>
               Upload complete. Proceed to <a href="review.html">Review</a>.
             </sl-alert>
           </div>
@@ -181,12 +181,12 @@
 
       <!-- Toasts (success & error) -->
       <sl-alert id="toastSuccess" variant="success" duration="3000" toast>
-        <sl-icon slot="icon" name="check2-circle"></sl-icon>
+        <sl-icon slot="icon" name="check2-circle" aria-hidden="true"></sl-icon>
         <strong>Saved.</strong> Your preferences were saved.
       </sl-alert>
 
       <sl-alert id="toastError" variant="danger" duration="4000" toast>
-        <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+        <sl-icon slot="icon" name="exclamation-triangle" aria-hidden="true"></sl-icon>
         <strong>Upload error.</strong> Only .png or .jpg files are supported.
       </sl-alert>
     </main>
